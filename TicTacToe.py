@@ -20,9 +20,69 @@ def play(row, col):
     check()
 
 
+def new_game():
+    for i in range(3):
+        for j in range(3):
+            buttons[i][j].setText(" ")
+            buttons[i][j].setStyleSheet("background: rgb(0, 0, 127);")
+
+
+def about():
+    msg_about_box = QMessageBox(text="""Welcome to Tic Tac Toe Game
+    -You can play in PvP and Co-op modes with the computer or your friend.
+    -New Game button is for reset game,
+    -Also you can see your score in score board.""")
+    msg_about_box.exec()
+
+
 def check():
-    if buttons[0][0].text() == "X" and buttons[0][1].text() == "X" and buttons[0][2].text() == "X":
+    for i in range(3):
+        sum_X = 0
+        sum_O = 0
+        for j in range(3):
+            if buttons[i][j].text() == "X":
+                sum_X += 1
+
+            elif buttons[i][j].text() == "O":
+                sum_O += 1
+
+        if sum_X == 3:
+            msg_box = QMessageBox(text="Player 1 win")
+            msg_box.exec()
+
+        elif sum_O == 3:
+            msg_box = QMessageBox(text="Player 2 win")
+            msg_box.exec()
+
+    for i in range(3):
+        sum_X = 0
+        sum_O = 0
+        for j in range(3):
+            if buttons[j][i].text() == "X":
+                sum_X += 1
+
+            elif buttons[j][i].text() == "O":
+                sum_O += 1
+
+        if sum_X == 3:
+            msg_box = QMessageBox(text="Player 1 win")
+            msg_box.exec()
+
+        elif sum_O == 3:
+            msg_box = QMessageBox(text="Player 2 win")
+            msg_box.exec()
+
+    if buttons[0][0].text() == "X" and buttons[1][1].text() == "X" and buttons[2][2].text() == "X":
         msg_box = QMessageBox(text="Player 1 win")
+        msg_box.exec()
+    elif buttons[0][0].text() == "O" and buttons[1][1].text() == "O" and buttons[2][2].text() == "O":
+        msg_box = QMessageBox(text="Player 2 win")
+        msg_box.exec()
+    elif buttons[0][2].text() == "X" and buttons[1][1].text() == "X" and buttons[2][0].text() == "X":
+        msg_box = QMessageBox(text="Player 1 win")
+        msg_box.exec()
+    elif buttons[0][2].text() == "X" and buttons[1][1].text() == "X" and buttons[2][0].text() == "X":
+        msg_box = QMessageBox(text="Player 2 win")
         msg_box.exec()
 
 
@@ -42,5 +102,8 @@ buttons = [[main_window.btn_1, main_window.btn_2, main_window.btn_3],
 for i in range(3):
     for j in range(3):
         buttons[i][j].clicked.connect(partial(play, i, j))
+
+main_window.btn_NG.clicked.connect(new_game)
+main_window.btn_about.clicked.connect(about)
 
 app.exec()
