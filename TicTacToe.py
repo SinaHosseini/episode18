@@ -1,4 +1,5 @@
 import sys
+import random
 from functools import partial
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtUiTools import QUiLoader
@@ -36,6 +37,7 @@ def about():
 
 
 def check():
+    global player1_score, player2_score, tie
     for i in range(3):
         sum_X = 0
         sum_O = 0
@@ -47,11 +49,22 @@ def check():
                 sum_O += 1
 
         if sum_X == 3:
+            player1_score += 1
+            main_window.your_score_box.setText(
+                main_window.your_score_box.text() + str(player1_score))
             msg_box = QMessageBox(text="Player 1 win")
             msg_box.exec()
 
         elif sum_O == 3:
+            player2_score += 1
+            main_window.competitor_score_box.setText(
+                main_window.competitor_score_box.text() + str(player2_score))
             msg_box = QMessageBox(text="Player 2 win")
+            msg_box.exec()
+        elif sum_X == sum_O:
+            tie += 1
+            main_window.tie_box.setText(main_window.tie_box.text() + str(tie))
+            msg_box = QMessageBox(text="Tie")
             msg_box.exec()
 
     for i in range(3):
@@ -65,24 +78,53 @@ def check():
                 sum_O += 1
 
         if sum_X == 3:
+            player1_score += 1
+            main_window.your_score_box.setText(
+                main_window.your_score_box.text() + str(player1_score))
             msg_box = QMessageBox(text="Player 1 win")
             msg_box.exec()
 
         elif sum_O == 3:
+            player2_score += 1
+            main_window.competitor_score_box.setText(
+                main_window.competitor_score_box.text() + str(player2_score))
             msg_box = QMessageBox(text="Player 2 win")
             msg_box.exec()
 
+        elif sum_X == sum_O:
+            tie += 1
+            main_window.tie_box.setText(main_window.tie_box.text() + str(tie))
+            msg_box = QMessageBox(text="Tie")
+            msg_box.exec()
+
     if buttons[0][0].text() == "X" and buttons[1][1].text() == "X" and buttons[2][2].text() == "X":
+        player1_score += 1
+        main_window.your_score_box.setText(
+            main_window.your_score_box.text() + str(player1_score))
         msg_box = QMessageBox(text="Player 1 win")
         msg_box.exec()
     elif buttons[0][0].text() == "O" and buttons[1][1].text() == "O" and buttons[2][2].text() == "O":
+        player2_score += 1
+        main_window.competitor_score_box.setText(
+            main_window.competitor_score_box.text() + str(player2_score))
         msg_box = QMessageBox(text="Player 2 win")
         msg_box.exec()
     elif buttons[0][2].text() == "X" and buttons[1][1].text() == "X" and buttons[2][0].text() == "X":
+        player1_score += 1
+        main_window.your_score_box.setText(
+            main_window.your_score_box.text() + str(player1_score))
         msg_box = QMessageBox(text="Player 1 win")
         msg_box.exec()
     elif buttons[0][2].text() == "X" and buttons[1][1].text() == "X" and buttons[2][0].text() == "X":
+        player2_score += 1
+        main_window.competitor_score_box.setText(
+            main_window.competitor_score_box.text() + str(player2_score))
         msg_box = QMessageBox(text="Player 2 win")
+        msg_box.exec()
+    elif sum_X == sum_O:
+        tie += 1
+        main_window.tie_box.setText(main_window.tie_box.text() + str(tie))
+        msg_box = QMessageBox(text="Tie")
         msg_box.exec()
 
 
@@ -90,6 +132,9 @@ app = QApplication(sys.argv)
 
 
 player = 1
+player1_score = 0
+player2_score = 0
+tie = 0
 
 loader = QUiLoader()
 main_window = loader.load("episode18\main_window.ui")
