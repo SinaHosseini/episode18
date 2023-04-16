@@ -115,7 +115,7 @@
     <item row="0" column="0">
      <layout class="QFormLayout" name="formLayout_2">
       <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="btn_coop">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(85, 170, 255);</string>
         </property>
@@ -125,7 +125,7 @@
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QRadioButton" name="0">
+       <widget class="QRadioButton" name="btn_pvp">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(85, 170, 255);</string>
         </property>
@@ -328,7 +328,7 @@ background-color: rgb(88, 38, 145);</string>
 color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
-       <string>Your score:</string>
+       <string>Your score: 0</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -353,7 +353,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
-       <string>Tie:</string>
+       <string>Tie: 0</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -378,7 +378,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
-       <string>competitor: </string>
+       <string>Competitor:  0</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
