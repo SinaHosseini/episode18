@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtUiTools import QUiLoader
 
 
-def game_mode():
+def game_mode(type):
     global game_status
     if main_window.btn_pvp.isChecked():
         game_status = "PvP"
@@ -40,7 +40,7 @@ def play(row, col):
                 rand_col = random.randint(0, 2)
                 if buttons[rand_row][rand_col].text() == "":
                     buttons[rand_row][rand_col].setText("O")
-                    buttons[row][col].setStyleSheet("color: orange;")
+                    buttons[rand_row][rand_col].setStyleSheet("color: orange;")
                     player = 1
                     break
 
