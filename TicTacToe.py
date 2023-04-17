@@ -28,14 +28,21 @@ def play(row, col):
             buttons[row][col].setStyleSheet("color: orange;")
             player = 1
 
-    elif game_status == "Co_op":
+    if game_status == "Co_op":
         if player == 1:
             buttons[row][col].setText("X")
             buttons[row][col].setStyleSheet("color: skyblue;")
             player = 2
 
         elif player == 2:
-            ...
+            while True:
+                rand_row = random.randint(0, 2)
+                rand_col = random.randint(0, 2)
+                if buttons[rand_row][rand_col].text() == "":
+                    buttons[rand_row][rand_col].setText("O")
+                    buttons[row][col].setStyleSheet("color: orange;")
+                    player = 1
+                    break
 
     check()
 
