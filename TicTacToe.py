@@ -28,7 +28,7 @@ def play(row, col):
             buttons[row][col].setStyleSheet("color: orange;")
             player = 1
 
-    if game_status == "Co_op":
+    if game_status == "Co-op":
         if player == 1:
             buttons[row][col].setText("X")
             buttons[row][col].setStyleSheet("color: skyblue;")
